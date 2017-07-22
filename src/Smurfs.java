@@ -6,7 +6,7 @@
  * 6. Make a Smurfette and print her name, hat color and girl or boy. */
  class Smurfsrunner{
 		public static void main (String[] args){
-			Smurfs Handy = new Smurfs(Handy);
+			Smurfs Handy = new Smurfs("Handy");
 		}
 	}
 public class Smurfs {
