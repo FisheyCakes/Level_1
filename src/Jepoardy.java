@@ -30,6 +30,8 @@ public class Jepoardy implements ActionListener {
 	private JButton firstButton;
 	private JButton secondButton;
 	private JButton thirdButton, fourthButton;
+	private JButton fifthButton;
+	private JButton sixthButton;
 	
 	private JPanel quizPanel;
 	int score = 0;
@@ -63,12 +65,25 @@ frame.setVisible(true);
 		// 8. Write the code inside the createButton() method below. Check that your game looks like Figure 1 in the Jeopardy Handout - http://bit.ly/1bvnvd4.
 		
 		// 9. Use the secondButton variable to hold a button using the createButton method
-		secondButton = createButton("");
+		secondButton = createButton("200$");
+		thirdButton = createButton("400$");
+		fourthButton = createButton("600$");
+		fifthButton = createButton("800$");
+		sixthButton = createButton("1000$");
 		// 10. Add the secondButton to the quizPanel
 		quizPanel.add(secondButton);
+		quizPanel.add(thirdButton);
+		quizPanel.add(fourthButton);
+		quizPanel.add(fifthButton);
+		quizPanel.add(sixthButton);
 		// 11. Add action listeners to the buttons (2 lines of code)
 	firstButton.addActionListener(this);
 	secondButton.addActionListener(this);
+	thirdButton.addActionListener(this);
+	fourthButton.addActionListener(this);
+	fifthButton.addActionListener(this);
+	sixthButton.addActionListener(this);
+
 
 		// 12. Fill in the actionPerformed() method below
 	
@@ -107,10 +122,33 @@ frame.setVisible(true);
 
 		// Use the method that plays the jeopardy theme music.
 playJeopardyTheme();
-		JButton buttonPressed = (JButton) arg0.getSource();
+		JButton buttonPressed = (JButton) arg0.getSource(); 
 		// If the buttonPressed was the firstButton
 		if(buttonPressed.equals(firstButton)) {
-			askQuestion();
+			askQuestion("How many ducks do I have given 67 chickens?", "33.5", 100);
+			quizPanel.remove(firstButton);
+		}
+		if(buttonPressed.equals(secondButton)) {
+			askQuestion("What is the objectively best computer os?", "Ubuntu", 200);
+			quizPanel.remove(secondButton);
+		}
+		if(buttonPressed.equals(thirdButton)) {
+		askQuestion("What is the best animated movie of this decade?", "Emoji Movie", 400);
+		quizPanel.remove(thirdButton);
+		}
+		if(buttonPressed.equals(fourthButton))
+		{
+			askQuestion("Which character is objectively better than Pac-man in Super smash brosther 4 3ds/wii-u edition?", "Litterally anyone except Little mac", 600);
+			quizPanel.remove(fourthButton);
+		}
+		if(buttonPressed.equals(fifthButton))
+		{
+			askQuestion("Using the pinyin pronunciation system, which letter should the tone markers be placed on the follow chineese word?    Xia", "a", 800);
+			quizPanel.remove(fifthButton);
+		}
+		if(buttonPressed.equals(sixthButton)) {
+			askQuestion("Who has the most magnificent perfect golden beard?", "David Stuart", 1000);
+			quizPanel.remove(sixthButton);
 		}
 			// Call the askQuestion() method
 			
@@ -136,10 +174,12 @@ playJeopardyTheme();
 			score += prizeMoney;
 			updateScore();
 			JOptionPane.showMessageDialog(null, "CORRECT");
+			JOptionPane.showMessageDialog(null, "Your score is "+score);
 		}else {
 			score-=prizeMoney;
-			JOptionPane.showMessageDialog(null, "The correct answer");
-			
+			updateScore();
+			JOptionPane.showMessageDialog(null, "You may have predicted that, but it was really me, " +correctAnswer+"!");
+			JOptionPane.showMessageDialog(null, "Your score is "+score);
 		}
 			// Increase the score by the prizeMoney
 			
