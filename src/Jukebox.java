@@ -23,19 +23,24 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
  * 2. Right click your project and add it as an External JAR (Under Java Build Path > Libraries).*/
 
 public class Jukebox implements Runnable, ActionListener {
-	private JButton buttonOne;
+	private JButton buttonOne = new JButton();
+	private JButton buttonTwo = new JButton();
+	private JButton buttonThree = new JButton();
+	private JButton buttonFour = new JButton();
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Jukebox());
 	}
-
+	Song song1 = new Song("TheMobRap.mp3");
+	Song song2 = new Song("Ain'tNoMan.mp3");
+	Song song3 = new Song("BestIEverHad.mp3");
+	Song song4 = new Song("Angry Genji Mains.mp3");
            public void run() {
 
 		// 3. Find an mp3 on your computer or on the Internet.
 		// 4. Create a Song
-Song song1 = new Song("TheMobRap");
 
 		// 5. Play the Song
-song1.play();
+//song1.play();
 
 
 		/*
@@ -49,15 +54,64 @@ song1.play();
 	JPanel Panel = new JPanel();
 Frame.add(Panel);
 Panel.add(buttonOne);
+Panel.add(buttonTwo);
+Panel.add(buttonThree);
+Panel.add(buttonFour);
 buttonOne.setText("The Mob Rap");
-String name1 = "The Mob Rap";
+buttonTwo.setText("Ain't No Man");
+buttonThree.setText("Best I Ever Had");
+buttonFour.setText("Angry Genji Mains");
 buttonOne.addActionListener(this);
-JButton buttonPressed = (JButton) arg0.getSource();
-if(buttonPressed.equals("buttonOne"){
-	
-}
+buttonTwo.addActionListener(this);
+buttonThree.addActionListener(this);
+buttonFour.addActionListener(this);
+Frame.pack();
+Frame.setVisible(true);
 
-          }
+}
+           
+
+           public void  actionPerformed(ActionEvent arg0) {
+        		// Remove this temporary message:
+        		JButton buttonPressed = (JButton) arg0.getSource(); 
+        		
+        		if(buttonPressed.equals(buttonOne)){
+        			song1.stop();
+        			song2.stop();
+        			song3.stop();
+        			song4.stop();
+        			song1.play();
+        		} 
+        		if(buttonPressed.equals(buttonTwo)){
+        			song1.stop();
+        			song2.stop();
+        			song3.stop();
+        			song4.stop();
+        			song2.play();
+        		} 
+        		if(buttonPressed.equals(buttonThree)){
+        			song1.stop();
+        			song2.stop();
+        			song3.stop();
+        			song4.stop();
+        			song3.play();
+        		} 
+        		if(buttonPressed.equals(buttonFour)){
+        			song1.stop();
+        			song2.stop();
+        			song3.stop();
+        			song4.stop();
+        			song4.play();
+        		} 
+        	
+           }
+
+
+
+
+
+
+          
 	/* Use this method to add album covers to your Panel. */
 	private JLabel loadImage(String fileName) {
 		URL imageURL = getClass().getResource(fileName);
@@ -65,11 +119,8 @@ if(buttonPressed.equals("buttonOne"){
 		return new JLabel(icon);
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	
+
 
 }
 
@@ -156,6 +207,8 @@ class Song {
 			return this.getClass().getResourceAsStream(songAddress);
 		}
 	}
+
+	
 }
 
 
